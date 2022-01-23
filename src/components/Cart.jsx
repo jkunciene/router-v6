@@ -5,7 +5,9 @@ import { Button, Table } from 'react-bootstrap';
 const Cart = ({ product }) => {
     let navigate = useNavigate();
 
-   console.log(product)
+    const getTotal = () => {
+      return product.reduce((sum, {price, quantity})=> sum + price*quantity, 0).toFixed(2)
+    }
 
   return (    
     <div>
@@ -37,7 +39,7 @@ const Cart = ({ product }) => {
          {
             product.length > 0 && 
             <tr>
-              <td colSpan={3}>Bendra suma: </td>
+              <td colSpan={3}>Bendra suma: { getTotal()}</td>
               <td><button className='btn btn-success'>Pay</button></td>             
               <td><button className='btn btn-danger'>Reset</button></td>             
             </tr>
