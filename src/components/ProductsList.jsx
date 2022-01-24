@@ -34,6 +34,12 @@ const ProductsList = () => {
             }
         setProduct(newCart);        
     }
+
+    //krepselio valymas, reset
+    const clearCart = () =>{
+        setProduct([]);
+    }
+    
 console.log(product);
     
 
@@ -51,13 +57,13 @@ console.log(product);
                 </Navbar>
             <Routes>
                 <Route path="/" element={<Product addToCart={addToCart} />} />
-                <Route path="/cart"  element={<Cart product={product}/>} />    
+                <Route path="/cart"  element={<Cart product={product}  clearCart={ clearCart}/>} />    
                 <Route path="*" element={<ErrorPage />} />      
             </Routes>
             </Router>   
     
   )
        
-};
+}
 
 export default ProductsList;
